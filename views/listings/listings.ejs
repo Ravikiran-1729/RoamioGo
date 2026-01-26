@@ -1,0 +1,90 @@
+<% layout('layouts/boilerplate') -%>
+    
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
+        
+
+        <% if(count < 1){ %>
+            <div class="col-12 d-flex justify-content-center align-items-center"
+                style="min-height: 40vh; min-width: 100%">
+                <p class="text-muted fs-5">No hotels are currently listed.</p>
+            </div>
+
+            <%}else{%>
+
+                <% for(let listing of listings){ %>
+                    <a href="/listings/<%= listing._id %>">
+
+                        <div class="card listing-card col">
+                            <img src="<%= listing.image[0].url %>" class="card-img-top transition" alt="..."
+                                style="height:  18rem;">
+                            <div class="card-img-overlay">
+                                <h5 class="card-title"></h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b>
+                                        <%= listing.title %>
+                                    </b> <br>
+                                    &#8377 <%= listing.price.toLocaleString('en-IN') %> / night
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <%}%>
+
+                        <%}%>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 
+
+            <div class="listingContainer">
+
+                <% for(let listing of listings){ %>
+
+                    <a href="/listings/<%= listing._id %>">
+
+                        <div class="listing card">
+
+                            <div class="img">
+                                <img src="<%= listing.image.url %>" alt="<%= listing.image.filename %>">
+                            </div>
+
+                            <h2>Title : <%= listing.title %>
+                            </h2>
+
+                            <p>Description : <%= listing.description %>
+                            </p>
+
+                            <b>&#8377 <%= listing.price.toLocaleString('en-IN') %> </b>
+
+                            <p> <i>
+                                    <%= listing.location %>
+                                </i> </p>
+
+                            <h6>
+                                <%=listing.country%>
+                            </h6>
+                        </div>
+
+                    </a>
+
+                    <%}%>
+
+            </div> -->

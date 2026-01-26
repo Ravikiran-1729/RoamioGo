@@ -1,0 +1,272 @@
+<% layout('/layouts/boilerplate.ejs')-%>
+
+    <script>
+        const mapToken ="<%= mapToken %>";
+        const service_loc = "<%= listing.location %>"; 
+        const service_coords = "<%=listing.service_location.coordinates%>" ?  "<%=listing.service_location.coordinates%>" : []; 
+        console.log(service_coords);
+    </script>
+    <div class="row mt-3">
+        <!-- Heading -->
+        <div class="
+        col-12
+        col-sm-10 offset-sm-1
+        col-md-8 offset-md-2
+        col-lg-6 offset-lg-3
+        heading mb-3
+    ">
+            <h3><i class="fa-solid fa-heart"></i> Listing Details</h3>
+        </div>
+
+
+        <% if(! listing){ %>
+            <div class="col-12 text-center text-muted py-5">
+                <h5>Listing not found</h5>
+            </div>
+        <% }else{%>
+            <!-- Card -->
+            <div class="
+                col-12
+                col-sm-10 offset-sm-1
+                col-md-8 offset-md-2
+                col-lg-6 offset-lg-3 
+            ">
+                <div class="card listing-card mb-3">
+                    <!-- <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing-img"> -->
+
+
+
+
+                    <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active indicators" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class="indicators"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" class="indicators"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4" class="indicators"></button>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active " data-bs-interval="10000">
+                                <img src="<%= listing.image[0]?.url ?  listing.image[0].url : "https://res.cloudinary.com/roamiogo/image/upload/RoamioGo_DEV/placeholder_img.png" %>" class="d-block w-100 card-img-top show-img" alt="/Images/placeholder_img">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <img src="<%= listing.image[1]?.url ?  listing.image[1].url : "https://res.cloudinary.com/roamiogo/image/upload/RoamioGo_DEV/placeholder_img.png" %>" class="d-block w-100 card-img-top show-img" alt="/Images/placeholder_img">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="<%= listing.image[2]?.url ?  listing.image[2].url : "https://res.cloudinary.com/roamiogo/image/upload/RoamioGo_DEV/placeholder_img.png" %>" class="d-block w-100 card-img-top show-img" alt="/Images/placeholder_img">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="<%= listing.image[3]?.url ?  listing.image[3].url : "https://res.cloudinary.com/roamiogo/image/upload/RoamioGo_DEV/placeholder_img.png" %>" class="d-block w-100 card-img-top show-img" alt="/Images/placeholder_img">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="card-body">
+                        <h5 class="card-title mt-3">
+                            <b>
+                                <%= listing.title %>
+                            </b>
+                        </h5>
+                        <p class="card-text">
+                            <%= listing.description %> <br>
+                                <b> &#8377 <%= listing.price.toLocaleString('en-IN') %>/night</b> <br>
+                                <%= listing.location %> <br>
+                                    <%=listing.country%> <br>
+                                    
+                            <%= listing.owner.username %>
+                        </p>
+                        <%  if(currUser && listing.owner._id.equals(currUser._id)){ %>
+
+                            <form method="get" action="/listings/<%= listing._id %>/edit">
+                                <div class="edit-btn-div">
+                                    <button type="submit" class="btn edit-btn mb-3"><i
+                                            class="fa-solid fa-wand-magic-sparkles"></i> Edit</button>
+                                </div>
+                            </form>
+    
+                            <form method="post" action="/listings/<%= listing._id %>?_method=DELETE">
+                                <div class="delete-btn-div">
+                                    <button type="submit" class="btn delete-btn mb-3"><i class="fa-solid fa-trash"></i>
+                                        Delete</button>
+                                </div>
+                            </form>
+                        <%}%>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+
+
+            <div class="
+                        col-12
+                        col-sm-10 offset-sm-1
+                        col-md-8 offset-md-2
+                        col-lg-6 offset-lg-3
+                        heading mb-3 mt-5 
+                    ">
+                    
+                <hr>
+                <h3><i class="fa-solid fa-star"></i> All Reviews</h3>
+            </div>
+                
+            <% if(listing.reviews) {%>
+                <% if(listing.reviews.length >= 1) {%>
+                    <div class="
+                                col-12
+                                col-sm-10 offset-sm-1
+                                col-md-8 offset-md-2
+                                col-lg-6 offset-lg-3
+                                heading mb-3
+                            ">
+                        <% for (let review of listing.reviews) { %>
+                            <div class="card mb-3">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title">@<%= review.auther.username %></h5>
+                                    <h5 class="card-title">
+                                        <% for (let i=0; i < review.rating; i++) { %>
+                                            <i class="fa-solid fa-star fa-2xs"></i>
+                                            <% } %>
+                                    </h5>
+
+
+                                </div>
+                                <div class="card-body" style="padding: 1rem !important;">
+                                    <p class="card-text">
+                                        <%= review.content %>
+                                    </p>
+                                    <figcaption class="blockquote-footer">
+                                        Shared on <cite title="Source Title"><%= review.createAt.toLocaleString('en-IN', { 
+                                                                                                                            timeZone: 'Asia/Kolkata', 
+                                                                                                                            dateStyle: 'medium', 
+                                                                                                                            timeStyle: 'short' 
+                                                                                                                            }) %></cite>
+                                    </figcaption>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                
+                <% } else {%>
+                    <div class="col-12 text-center text-muted py-5">
+                        <h5>Reviews not found!</h5>
+                    </div>
+                <% } %>
+            <% } else {%>
+                    <div class="col-12 text-center text-muted py-5">
+                        <h5>No reviews yet. Be the first to leave a review!</h5>
+                    </div>
+                <% } %>
+            
+        <% }%>
+
+
+        <div class="
+                        col-12
+                        col-sm-10 offset-sm-1
+                        col-md-8 offset-md-2
+                        col-lg-6 offset-lg-3
+                        heading mb-3 mt-5 
+                    ">
+                    
+                <hr>
+                <h3><i class="fa-solid fa-location-dot"></i> Where you'll be</h3>
+            </div>
+            <div class="
+                        col-12
+                        col-sm-10 offset-sm-1
+                        col-md-8 offset-md-2
+                        col-lg-6 offset-lg-3
+                        heading mb-3
+                    ">
+                    <div id="listing_map" class="map"></div>
+                </div>
+
+
+        <div class="
+                    col-12
+                    col-sm-10 offset-sm-1
+                    col-md-8 offset-md-2
+                    col-lg-6 offset-lg-3
+                    heading mt-5 
+        ">
+            <h3><i class="fa-solid fa-thumbs-up"></i> How Was Your Stay?</h3>
+        </div>
+
+
+        <div class="
+                    col-12
+                    col-sm-10 offset-sm-1
+                    col-md-8 offset-md-2
+                    col-lg-6 offset-lg-3
+                    
+                ">
+
+            <hr>
+            <form action="/listings/<%= listing._id %>/review" method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="rating" class="form-label"><i class="fa-solid fa-star"></i> Rating</label>
+                    <fieldset class="starability-growRotate" id="rating">
+                        <input type="radio" id="first-rate1" name="review[rating]" value=1 checked/>
+                        <label for="first-rate1" title="Terrible">1 star</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value=2 />
+                        <label for="first-rate2" title="Not good">2 stars</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value=3 />
+                        <label for="first-rate3" title="Average">3 stars</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value=4 />
+                        <label for="first-rate4" title="Very good">4 stars</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value=5 />
+                        <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                    <div class="valid-feedback">
+                        Thanks for your rating!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please Rate.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="content" class="form-label"><i class="fa-solid fa-comment"></i>
+                        Comment</label>
+                    <textarea name="review[content]" id="content" class="form-control" rows="3" required
+                        placeholder="Type your comment here..."></textarea>
+                    <div class="valid-feedback">
+                        Thanks for your comment!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please comment.
+                    </div>
+                </div>
+
+                <div class="review-btn-div">
+                    <button type="submit" class="btn review-btn mb-3"><i class="fa-solid fa-thumbs-up"></i>
+                        Thanks!</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+    
+    <script src="/JS/listing_map.js"></script>

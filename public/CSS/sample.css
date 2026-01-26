@@ -1,0 +1,193 @@
+:root {
+    /* ===== Base ===== */
+    --color-bg-primary: #ffffff;
+    /* Warm ivory */
+    --color-bg-secondary: #FFFFFF;
+
+    /* ===== Brand ===== */
+    --color-brand-primary: #141A21;
+    /* Dark navy-charcoal */
+    --color-brand-secondary: #3A4149;
+
+    /* ===== Accent ===== */
+    --color-accent-gold: #D1B25E;
+    /* Luxury gold */
+    --color-accent-gold-dark: #A88A3D;
+
+    /* ===== Text ===== */
+    --color-text-primary: #121212;
+    --color-text-secondary: #5C5C5C;
+
+    /* ===== Utility ===== */
+    --color-border: #DAD5CB;
+    --color-shadow: rgba(20, 26, 33, 0.12);
+
+
+    /* ========================= */
+    /* Spacing System (8pt grid) */
+    /* ========================= */
+
+    /* Micro spacing (icons, inline elements) */
+    --space-2xs: 4px;   /* very tight */
+    --space-xs: 8px;    /* tight */
+
+    /* Small spacing (forms, labels) */
+    --space-sm: 12px;   /* compact */
+    --space-md: 16px;   /* default */
+
+    /* Medium spacing (cards, sections) */
+    --space-lg: 24px;   /* relaxed */
+    --space-xl: 32px;   /* spacious */
+
+    /* Large spacing (page sections) */
+    --space-2xl: 48px;  /* premium */
+    --space-3xl: 64px;  /* hero / layouts */
+
+    /* ========================= */
+    /* Semantic Spacing Aliases */
+    /* ========================= */
+
+    --padding-button-y: var(--space-sm);
+    --padding-button-x: var(--space-lg);
+
+    --padding-card: var(--space-lg);
+    --padding-card-compact: var(--space-md);
+
+    --margin-section: var(--space-2xl);
+    --margin-section-small: var(--space-xl);
+
+    --gap-grid: var(--space-lg);
+    --gap-grid-small: var(--space-md);
+
+
+    /* ========================= */
+    /* Border Radius System */
+    /* ========================= */
+
+    --radius-xs: 2px;    /* subtle separators, inputs */
+    --radius-sm: 4px;    /* buttons, small elements */
+    --radius-md: 8px;    /* cards, modals */
+    --radius-lg: 12px;   /* large cards, panels */
+    --radius-xl: 16px;   /* hero sections */
+    --radius-pill: 9999px; /* pills, tags */
+
+    /* Inner radii (outer − 4px) */
+    --radius-inner-sm: 2px;
+    --radius-inner-md: 4px;
+    --radius-inner-lg: 8px;
+    --radius-inner-xl: 12px;
+
+    /* ========================= */
+    /* Semantic Radius Aliases */
+    /* ========================= */
+
+    --radius-button: var(--radius-sm);
+    --radius-input: var(--radius-sm);
+
+    --radius-card: var(--radius-md);
+    --radius-card-large: var(--radius-lg);
+
+    --radius-modal: var(--radius-lg);
+
+    --radius-badge: var(--radius-pill);
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Primary CTA Button */
+button.primary {
+    background-color: var(--color-accent-gold);
+    color: var(--color-bg-secondary);
+    padding: var(--padding-button-y) var(--padding-button-x);
+    border-radius: var(--radius-button);
+}
+
+/* Page Background */
+.main{
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    /* padding: var(--space-xl); */
+
+}
+
+/* Cards */
+.card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px var(--color-shadow);
+    padding: var(--padding-card);
+    margin-bottom: var(--space-lg);
+    border-radius: var(--radius-card);
+    
+}
+
+
+.listingContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    box-sizing: border-box;
+}
+
+.listing{
+    height: 100%;
+    overflow: hidden;
+}
+
+.img{
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: var(--radius-inner-md);
+    overflow: hidden;
+
+
+}
+
+.img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: all 0.4s ease-in-out;
+}
+
+.img img:hover{
+    transform: scale(1.1);
+}
+
+
+#showImg img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: none;
+} 
+
+#showImg img:hover{
+    transform: none;
+}
+
+
+.section {
+    margin-bottom: var(--margin-section);
+}
+
+.section-compact{
+    margin-bottom: var(--margin-section-small);
+}
+
+
+
+
+a{
+    text-decoration: none;
+    color: inherit;
+}

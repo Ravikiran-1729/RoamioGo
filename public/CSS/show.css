@@ -1,0 +1,151 @@
+.show-img{
+    height: min(50vh, 437px);
+}
+
+.card-title i,
+.heading h3 i{
+    color: #ff385c;
+}
+
+
+.carousel-indicators .active{
+    background-color: #fb9cad   !important;
+    color: #fb9cad !important;
+}
+
+.indicators{
+    color: #fcf2f2;
+}
+
+
+
+.map {
+    height: min(40vh, 375px);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+
+
+/* Marker container */
+.airbnb-logo {
+    background-color: #ff002f;
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 16px rgba(255, 56, 92, 0.35),
+        0 2px 4px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Shared icon styles */
+.marker {
+    color: #fcf2f2;
+    font-size: 1.25rem;
+    position: absolute;
+    transition:
+        opacity 0.2s ease,
+        transform 0.25s ease;
+}
+
+/* Default state */
+.airbnb-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.home-icon {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+/* Hover state: swap icons */
+.airbnb-logo:hover .airbnb-icon {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.airbnb-logo:hover .home-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Lift on hover */
+.airbnb-logo:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 10px 24px rgba(255, 56, 92, 0.45),
+        0 4px 8px rgba(0, 0, 0, 0.18);
+}
+
+/* Click feedback */
+.airbnb-logo:active {
+    transform: scale(0.95);
+}
+
+
+
+
+/* Remove default Mapbox popup chrome */
+.mapboxgl-popup-content {
+    padding: 0 !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18);
+    background: transparent;
+}
+
+.airbnb-popup{
+    padding: 0;
+}
+
+
+/* Main popup card */
+.airbnb-popup .popup-card {
+    background: #fcf2f2;
+    border-radius: 16px;
+    padding: 14px 16px;
+    min-width: 200px;
+    max-width: 260px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+/* Description */
+.airbnb-popup .popup-desc {
+    margin: 0;
+    font-size: 13px;
+    color: #717171;
+    line-height: 1.4;
+}
+
+/* Popup tip (arrow) */
+.mapboxgl-popup-tip {
+    border-top-color: #fcf2f2 !important;
+}
+
+/* Optional: subtle animation */
+.mapboxgl-popup {
+    animation: popupFadeUp 0.5s ease-out;
+}
+
+@keyframes popupFadeUp {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

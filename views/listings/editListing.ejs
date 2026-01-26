@@ -1,0 +1,149 @@
+<% layout('/layouts/boilerplate.ejs')-%>
+
+
+    <div class="row">
+        <div class="
+        col-12
+        col-sm-10 offset-sm-1
+        col-md-8 offset-md-2
+        col-lg-6 offset-lg-3">
+            <br>
+            <h1>Merge your hotel with RoamioGo - Solution for Luxary Stay</h1>
+            <hr>
+            <form method="post" action="/listings/<%= listing._id %>/edit?_method=PATCH" class="needs-validation"
+                novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Title</label>
+                    <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control"
+                        id="title" placeholder="Add a catchy Title" required>
+                    <div class="valid-feedback">
+                        Catchy and clear!
+                    </div>
+                    <div class="invalid-feedback">
+                        Title is required
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label"><i class="fa-solid fa-snowflake"></i>
+                        Description</label>
+                    <textarea name="listing[description]" class="form-control" id="description" rows="3"
+                        required><%= listing.description %></textarea>
+                    <div class="valid-feedback">
+                        Clear and informative!
+                    </div>
+                    <div class="invalid-feedback">
+                        Description is required.
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="mb-3 col-4">
+                        <label for="price" class="form-label"><i class="fa-solid fa-indian-rupee-sign"></i>
+                            Price</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">&#8377;</span>
+
+                            <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control"
+                                id="price" placeholder="1500" required min="1" aria-describedby="inputGroupPrepend">
+                            <div class="valid-feedback">
+                                Pricing looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Price must be greater than zero.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-8">
+                        <label for="country" class="form-label"><i class="fa-solid fa-globe"></i> Country</label>
+                        <!-- <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control"
+                            id="country" placeholder="India"> -->
+
+                        <select name="listing[country]" class="form-select" id="country" required>
+                            <option value="<%= listing.country %>" selected><%= listing.country %></option>
+                            <option value="India">India</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Canada">Canada</option>
+                        </select>
+
+                        <div class="valid-feedback">
+                            Country verified!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please select a country
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="url" class="form-label"><i class="fa-solid fa-camera-retro"></i> Image Preview</label><br>
+                    <!-- <img src="<%= listing.image.url %>" alt="" style=" width: 100%;aspect-ratio: 16/9; object-fit: cover; border-radius: 25px;"> -->
+
+                    <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active indicators" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class="indicators"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3" class="indicators"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4" class="indicators"></button>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active " data-bs-interval="10000">
+                                <img src="<%= listing.image[0]?.url ?  listing.image[0].url : "https://res.cloudinary.com/roamiogo/image/upload/RoamioGo_DEV/placeholder_img.png" %>" class="d-block w-100" style=" width: 100%;aspect-ratio: 16/9; object-fit: cover; border-radius: 25px;" alt="/Images/placeholder_img">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <img src="<%= listing.image[1]?.url ?  listing.image[1].url : "https://res.cloudinary.com/roamiogo/image/upload/RoamioGo_DEV/placeholder_img.png" %>" class="d-block w-100" style=" width: 100%;aspect-ratio: 16/9; object-fit: cover; border-radius: 25px;" alt="/Images/placeholder_img">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="<%= listing.image[2]?.url ?  listing.image[2].url : "https://res.cloudinary.com/roamiogo/image/upload/RoamioGo_DEV/placeholder_img.png" %>" class="d-block w-100" style=" width: 100%;aspect-ratio: 16/9; object-fit: cover; border-radius: 25px;" alt="/Images/placeholder_img">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="<%= listing.image[3]?.url ?  listing.image[3].url : "https://res.cloudinary.com/roamiogo/image/upload/RoamioGo_DEV/placeholder_img.png" %>" class="d-block w-100" style=" width: 100%;aspect-ratio: 16/9; object-fit: cover; border-radius: 25px;" alt="/Images/placeholder_img">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label"><i class="fa-solid fa-camera-retro"></i>Upload New Image</label>
+                    <input name="images" type="file" class="form-control" id="image" multiple accept=".jpg,.jpeg,.png">
+                    <div class="valid-feedback">
+                        Image meets requirements!
+                    </div>
+                    <div class="invalid-feedback">
+                        Image is required.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label"><i class="fa-solid fa-location-dot"></i> Location</label>
+                    <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control"
+                        id="location" placeholder="Mohol, Pune-Solapapur Highway" required>
+
+                    <div class="valid-feedback">
+                        Location verified!
+                    </div>
+                    <div class="invalid-feedback">
+                        Location is required.
+                    </div>
+                </div>
+
+                <br>
+                <div class="save-btn-div">
+                    <button type="submit" class="btn save-btn mb-3"><i class="fa-solid fa-bolt"></i> Save Hotel</button>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,80 @@
+<nav class="navbar w-100 navbar-expand-sm sticky-top border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings">
+            <i class="fa-brands fa-airbnb" style="color:red;"></i>roamioGo
+        </a>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+            <!-- Center section (2 parts) -->
+            <div class="navbar-nav1 nav-center">
+                <a class="nav-link1 active" href="/listings"><img src="/Images/house.png"> Home</a>
+                <a class="nav-link1" href="#"><img src="/Images/ballon.png"> Experience</a>
+                <a class="nav-link1" href="#"><img src="/Images/bell.png"> Service</a>
+            </div>
+
+
+            <!-- Right section (1 part) -->
+            <div class="navbar-nav1 nav-right">
+                <a class="nav-link1" href="/listings/new" id="new-listing-a"><b>Your home</b></a>
+                <a class="nav-link1" href="#"><i class="fa-solid fa-globe"></i></a>
+
+                <div class="dropstart">
+                    <a type="button" class="btn dropdown-btn  dropdown-toggle-split nav-link1" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fa-solid fa-bars"></i></a>
+
+                    <ul class="dropdown-menu menu ">
+                        <% if(!currUser || !currUser._id){ %>
+                            <li><a class="dropdown-item" href="/roamioGo/signup">Signup</a></li>
+                            <li><a class="dropdown-item" href="/roamioGo/login">Login</a></li>
+
+                        <% }else{ %>
+                            <li><a class="dropdown-item" href="/roamioGo/logout">Logout</a></li>
+                        <% } %>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container-fluid">
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup1">
+
+        <form class="navbar-nav w-100 w-lg-70 w-md-60 w-sm-50 align-items-center" action="#" method="GET" enctype="multipart/form-data">
+
+            <!-- Where -->
+            <div class="form-item">
+                <label>Where</label>
+                <input type="text" name="location" placeholder="Search destination">
+            </div>
+
+            <!-- When -->
+            <div class="form-item">
+                <label>When</label>
+                <input type="date" name="date">
+            </div>
+
+            <!-- Who -->
+            <div class="form-item last-item">
+                <label>Who</label>
+                <input type="number" name="guests" placeholder="Add guests" min="1">
+
+                <button type="submit" class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span class="search-text">Search</span>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+</nav>

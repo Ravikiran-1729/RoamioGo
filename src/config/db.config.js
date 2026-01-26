@@ -1,0 +1,17 @@
+const path = require('path');
+// require('dotenv').config({path : path.resolve(__dirname, '../../.env')});
+
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({path : path.resolve(__dirname, '../../.env')});
+}
+
+const mongoose = require('mongoose');
+
+// const MONGOURL = process.env.MONGOURL;
+const ATLASURL = process.env.ATLAS_URL;
+
+const connectDB = async () =>{
+    await mongoose.connect(ATLASURL);
+};
+
+module.exports = connectDB;

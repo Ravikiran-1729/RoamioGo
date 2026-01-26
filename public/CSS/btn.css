@@ -1,0 +1,89 @@
+/* Parent container */
+.login-btn-div,
+.signup-btn-div,
+.review-btn-div,
+.edit-btn-div,
+.add-btn-div ,
+.save-btn-div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 3.5rem; /* ensures vertical alignment space */
+}
+
+/* Edit & add new listing Page */
+form div label i{
+    color: #f98888;
+}
+
+
+.login-btn,
+.signup-btn,
+.review-btn,
+.edit-btn,
+.delete-btn,
+.save-btn,
+.add-btn {
+    position: absolute;
+    right: 0;
+
+    padding: 0.6rem 1.2rem;
+    background-color: #ff385c;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    border-radius: 9999px;
+    cursor: pointer;
+
+    box-shadow: 0 4px 10px rgba(255, 56, 92, 0.35);
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+/* Hover feedback */
+.login-btn,
+.signup-btn,
+.review-btn,
+.edit-btn:hover,
+.delete-btn:hover,
+.save-btn:hover,
+.add-btn:hover {
+    border: none;
+    color: #ffffff;
+    background-color: #e93352;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(255, 56, 92, 0.45);
+}
+
+/* Active (click) state */
+.login-btn,
+.signup-btn,
+.review-btn,
+.edit-btn:active,
+.delete-btn:active,
+.save-btn:active,
+.add-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(255, 56, 93, 0.185);
+}
+
+/* Focus accessibility */
+.login-btn,
+.signup-btn,
+.review-btn,
+.edit-btn:focus-visible,
+.delete-btn:focus-visible,
+.save-btn:focus-visible,
+.add-btn:focus-visible {
+    background-color: #e93352;
+    outline: 1px solid rgba(247, 111, 136, 0.995);
+    outline-offset: 2px;
+    border: #ff385c;
+    color: #ffffff;
+}

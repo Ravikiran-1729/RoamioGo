@@ -1,0 +1,122 @@
+<% layout('/layouts/boilerplate.ejs')-%>
+
+
+    <script>
+        const mapToken ="<%= mapToken %>";
+    </script>
+
+    <div class="row">
+        <div class="
+        col-12
+        col-sm-10 offset-sm-1
+        col-md-8 offset-md-2
+        col-lg-6 offset-lg-3">
+            <br>
+            <h1>Merge your hotel with RoamioGo - Solution for Luxary Stay</h1>
+            <hr>
+            <form method="post" action="/listings/new" class="needs-validation" novalidate enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Title</label>
+                    <input name="listing[title]" type="text" class="form-control" id="title"
+                        placeholder="Add a catchy Title" required>
+                    <div class="valid-feedback">
+                        Catchy and clear!
+                    </div>
+                    <div class="invalid-feedback">
+                        Title is required
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label"><i class="fa-solid fa-snowflake"></i>
+                        Description</label>
+                    <textarea name="listing[description]" class="form-control" id="description" rows="3"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Clear and informative!
+                    </div>
+                    <div class="invalid-feedback">
+                        Description is required.
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label for="price" class="form-label"><i class="fa-solid fa-indian-rupee-sign"></i>Price</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">&#8377;</span>
+                            <input name="listing[price]" type="number" class="form-control" id="price"
+                                placeholder="1500" required min="1" aria-describedby="inputGroupPrepend">
+                            <div class="valid-feedback">
+                                Pricing looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Price must be greater than zero.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 col-8">
+                        <label for="country" class="form-label"><i class="fa-solid fa-globe"></i> Country</label>
+
+                        <select name="listing[country]" class="form-select" id="country" required>
+                            <option value="" selected disabled>Choose...</option>
+                            <option value="India">India</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Canada">Canada</option>
+                        </select>
+
+                        <div class="valid-feedback">
+                            Country verified!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please select a country
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="image" class="form-label"><i class="fa-solid fa-camera-retro"></i>Upload Image</label>
+                    <input name="images" type="file" class="form-control" id="image" required multiple accept=".jpg,.jpeg,.png">
+                    <div class="valid-feedback">
+                        Image meets requirements!
+                    </div>
+                    <div class="invalid-feedback">
+                        Image is required.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label"><i class="fa-solid fa-location-dot"></i> Location</label>
+                    <input name="listing[location]" type="text" class="form-control" id="location"
+                        placeholder="Mohol, Pune-Solapapur Highway" required >
+                    <div class="valid-feedback">
+                        Location verified!
+                    </div>
+                    <div class="invalid-feedback">
+                        Location is required.
+                    </div>
+                </div>
+
+                <div id="newListing_map" class="map"></div>
+
+                <div class="mb-3" style="display: none;">
+                    <input type="text" name="listing[lng]" id="listing_lng"  style="display: none;" required>
+                    <input type="text" name="listing[lat]" id="listing_lat"  style="display: none;" required>
+                </div>
+
+                <br>
+                <div class="add-btn-div">
+                    <button type="submit" class="btn add-btn mb-3"><i class="fa-solid fa-plus"></i> Add Hotel</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    
+    <script src="/JS/newListing_map.js"></script>

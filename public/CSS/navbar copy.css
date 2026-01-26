@@ -1,0 +1,288 @@
+
+
+.navbar {
+    flex-direction: column;
+    height: 11.3rem;
+    background-color: #fcf2f2;
+    row-gap: 1.4rem;
+    z-index: 1050 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px 24px !important;
+}
+
+.navbar-brand{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: x-large;
+    color: red;
+    font-weight: 600;
+    transition: all 0.5s ease-in-out;
+}
+.navbar-brand:hover{
+    color:#ff385c;
+    transform: scale(1.04);
+}
+
+
+.fa-airbnb{
+    color: red;
+    font-size: xx-large;
+}
+
+
+@media (min-width: 576px) {
+    .w-sm-40 { width: 40% !important; }
+    .w-md-50 { width: 50% !important; }
+    .w-lg-60 { width: 60% !important; }
+    .w-xlg-70 { width: 70% !important; }
+}
+
+.navbar-nav {
+    height: 3.6rem;
+    position: relative; /* required for separator */
+    display: flex;
+    align-items: stretch;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.20);
+    border-radius: 9999px;
+    border: 2px solid #56555534;
+                 /* creates space from outer pill */
+}
+
+.nav-link {
+    position: relative;
+    flex: 1;                      /* 🔑 divide width equally */
+    display: flex;
+    flex-direction: column;
+    align-items: start; 
+    justify-content: center;
+    height: 100%;
+    padding-left: 30px !important;
+    color: #222222;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out;
+    border-radius: 9999px;            /* space BETWEEN zones */
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.nav-link span{
+    font-size: 12px;
+    color: #222222b7;
+}
+
+.nav-link:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 100%;                 /* 🔑 move to end of pill */
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.18);
+    transform: translateX(-0.5px); /* center the line */
+    pointer-events: none;
+}
+
+
+
+/* optional: hide separator when hovered */
+.nav-link:hover::after {
+    opacity: 0;
+}
+.nav-link:hover {
+    background-color: #70707015;
+}
+
+/* style icon inside last nav-link */
+.nav-link:last-child i {
+    position: absolute;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: #ff385c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.nav-link:last-child {
+    position: relative;
+    justify-content: center;   /* text stays truly centered */
+}
+
+
+.nav-link i:hover {
+    transform: scale(1.05);
+
+}
+.nav-link1 i{
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+    color: #222222;
+    background-color: rgba(128, 128, 128, 0.207);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: transform 0.15s ease-in-out;
+}
+
+.nav-link1 i:hover{
+    transform: scale(1.05);
+}
+
+/* ==============================
+   NAVBAR COLLAPSE LAYOUT
+   ============================== */
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Center group (2 parts) */
+.nav-center {
+    flex: 2;
+    display: flex;
+    justify-content: end;
+    gap: 1.5rem;
+    margin-right: 7%;
+}
+
+/* Right group (1 part) */
+.nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dropdown-btn,
+.dropdown-btn:focus,
+.dropdown-btn:active,
+.dropdown-btn:focus-visible {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+
+/* ==============================
+   NAV GROUP CONTAINER
+   ============================== */
+
+.navbar-nav1 {
+    height: 3.5rem;
+    display: flex;
+    align-items: stretch;
+}
+
+
+/* ==============================
+   NAV LINKS
+   ============================== */
+
+.nav-link1 {
+    position: relative;                 /* underline anchor */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    height: 100%;
+    padding: 0 0.5rem;
+
+    color: #222;
+    font-weight: 400;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.nav-link1:hover {
+    color: #000;
+}
+
+.menu{
+    background-color: #faf4f4;
+}
+
+.menu a{
+    border-radius: 8px;
+}
+
+/* ==============================
+   ICON STYLING
+   ============================== */
+
+.nav-link1 img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: cover;
+
+    transition: transform 0.15s ease;
+}
+
+/* Shake on hover */
+.nav-link1:hover img {
+    animation: nav-icon-shake 0.45s ease-in-out 2;
+}
+
+
+/* ==============================
+   UNDERLINE INDICATOR
+   ============================== */
+
+.nav-link1::after {
+    content: "";
+    position: absolute;
+    bottom: 0.15rem;
+    left: 55%;
+
+    width: 100%;
+    height: 3px;
+
+    background-color: #222222d1;
+
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+
+    transition: transform 0.25s ease;
+}
+
+/* Active link */
+.nav-link1.active {
+    color: #000;
+    font-weight: 600;
+}
+
+.nav-link1.active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+
+/* ==============================
+   ANIMATIONS
+   ============================== */
+
+@keyframes nav-icon-shake {
+    0%   { transform: scale(1.05) translateX(0); }
+    20%  { transform: scale(1.05) translateX(-2px); }
+    40%  { transform: scale(1.05) translateX(2px); }
+    60%  { transform: scale(1.05) translateX(-2px); }
+    80%  { transform: scale(1.05) translateX(2px); }
+    100% { transform: scale(1.05) translateX(0); }
+}
+
+
+
