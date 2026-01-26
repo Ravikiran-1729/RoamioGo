@@ -15,8 +15,6 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user.model');
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const MongoStore = require('connect-mongo').default;
-const { createWebCryptoAdapter } = require( 'connect-mongo');
-
 const app = express();
 
 app.engine('ejs', ejsMate);
@@ -34,9 +32,6 @@ app.use(methodOverride('_method'));
 const store = MongoStore.create({
     mongoUrl: process.env.ATLAS_URL,
     touchAfter: 24 * 60 * 60,
-    cryptoAdapter: createWebCryptoAdapter({
-        secret: process.env.SESSION_SECRET,
-    })
 });
 
 store.on('error', (err) => {
