@@ -89,5 +89,5 @@ listingSchema.post('findOneAndDelete', async function (data) {
 
 const Listing = mongoose.model('Listing', listingSchema);
 
-Listing.createIndexes();
+// Listing.createIndexes();
 module.exports = Listing;
