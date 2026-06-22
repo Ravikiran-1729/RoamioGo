@@ -89,6 +89,9 @@ app.use((req, res, next) =>{
 });
 
 
+app.get('/privacy-policy', (req, res) => {
+    res.render('privacy-policy');
+});
 
 app.use('/roamioGo', require('./routes/authentication.route'))
 app.use('/listings', require('./routes/listings.route'));
