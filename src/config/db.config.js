@@ -12,6 +12,7 @@ const ATLASURL = process.env.ATLAS_URL;
 
 const connectDB = async () =>{
     await mongoose.connect(ATLASURL);
+    console.log("✅ Database Connected Successfully");
 };
 
 module.exports = connectDB;
